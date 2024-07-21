@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class JoystickMove : MonoBehaviour
 {
     public Joystick moveJoystick;
     public float playerSpeed = 5f;
@@ -15,16 +15,19 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
 
-        // Calculate screen boundaries in world coordinates
+
+    void FixedUpdate()
+    {
+       
+
+        // Recalculate screen boundaries in world coordinates
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
         minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(screenWidth, screenHeight, 0));
-    }
 
-    void FixedUpdate()
-    {
         float moveHorizontal = moveJoystick.Direction.x;
         float moveVertical = moveJoystick.Direction.y;
 
