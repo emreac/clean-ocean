@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,7 +54,14 @@ public class FillSlider : MonoBehaviour
         // Implement your level completion logic here
         Debug.Log("You can load the next level or show a completion message.");
         LevelDoneUI.SetActive(true);
+        StartCoroutine(StopGame());
         // Example: Load the next level
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator StopGame()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Time.timeScale = 0f;
     }
 }

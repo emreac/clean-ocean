@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Vacoom : MonoBehaviour
 {
+    /// <summary>
+    ///     WIN/DEATH CONDITIONS
+    /// </summary>
+
+
+    public HealthBar HealthBar;
 
     public AudioSource collectSound;
     public AudioSource errorSound;
@@ -17,6 +23,7 @@ public class Vacoom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Garbage"))
         {
+            HealthBar.Heal(5f);
             DOTween.Restart("one");
             Debug.Log("There is garbage!");
             collectSound.Play();
@@ -35,6 +42,7 @@ public class Vacoom : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Bomb"))
         {
+            HealthBar.TakeDamage(70f);
             DOTween.Restart("bombCocpit");
             DOTween.Restart("-one");
             DOTween.Restart("bombScreen");
