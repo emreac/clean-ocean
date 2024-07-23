@@ -11,6 +11,7 @@ public class Vacoom : MonoBehaviour
 
 
     public HealthBar HealthBar;
+    public MoneyManager MoneyManager;
 
     public AudioSource collectSound;
     public AudioSource errorSound;
@@ -23,6 +24,7 @@ public class Vacoom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Garbage"))
         {
+            MoneyManager.AddMoney(5);
             HealthBar.Heal(5f);
             DOTween.Restart("one");
             Debug.Log("There is garbage!");
@@ -32,6 +34,7 @@ public class Vacoom : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Fish"))
         {
+            MoneyManager.ReduceMoney(5);
             DOTween.Restart("-one");
             Debug.Log("There is fish!");
            
