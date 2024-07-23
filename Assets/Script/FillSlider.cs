@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FillSlider : MonoBehaviour
 {
+    public AudioSource winSound;
+
     public GameObject LevelDoneUI;
     public Slider uiSlider; // Reference to the UI Slider
     public float duration = 20f; // Duration to fill the slider
@@ -54,6 +57,7 @@ public class FillSlider : MonoBehaviour
         // Implement your level completion logic here
         Debug.Log("You can load the next level or show a completion message.");
         LevelDoneUI.SetActive(true);
+        winSound.Play();
         StartCoroutine(StopGame());
         // Example: Load the next level
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -63,5 +67,11 @@ public class FillSlider : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         Time.timeScale = 0f;
+    }
+
+    public void NextButton()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
 }
