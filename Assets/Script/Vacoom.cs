@@ -19,6 +19,8 @@ public class Vacoom : MonoBehaviour
     public ParticleSystem particleGarbage;
     public ParticleSystem particleFish;
     public ParticleSystem particleBomb;
+
+    
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -87,5 +89,10 @@ public class Vacoom : MonoBehaviour
 
         }
 
+    }
+
+    private void Start()
+    {
+        TinySauce.OnGameStarted("Level1");
     }
 }

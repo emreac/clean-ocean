@@ -6,7 +6,8 @@ using DG.Tweening;
 public class MoneyManager : MonoBehaviour
 {
     public TextMeshProUGUI moneyText; // Reference to the UI Text component
-    private int money = 0; // Current money value
+    public int money = 0; // Current money value
+    
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class MoneyManager : MonoBehaviour
     }
 
     // Method to update the UI Text with the current money value
-    void UpdateMoneyUI()
+    public void UpdateMoneyUI()
     {
         moneyText.text = money.ToString();
     }

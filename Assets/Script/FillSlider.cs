@@ -2,9 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class FillSlider : MonoBehaviour
 {
+    public MoneyManager MoneyManager;
+    bool isUserCompleteLevel;
     public AudioSource winSound;
 
     public GameObject LevelDoneUI;
@@ -59,6 +62,8 @@ public class FillSlider : MonoBehaviour
         LevelDoneUI.SetActive(true);
         winSound.Play();
         StartCoroutine(StopGame());
+        TinySauce.OnGameFinished(MoneyManager.money);
+        TinySauce.OnGameFinished(isUserCompleteLevel, MoneyManager.money, "UserGameLevelNumber");
         // Example: Load the next level
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
